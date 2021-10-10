@@ -1,36 +1,22 @@
 package br.com.fadergs.cadastramentodecliente;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import br.com.fadergs.cadastramentodecliente.databinding.ActivityMainBinding;
-
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private ListView lvClientes;
-    private ArrayAdapter adapter;
-    private List<Cliente> listaDeClientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +28,32 @@ public class MainActivity extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fab.setOnClickListener(view -> {
 
-            }
+            Intent intention = new Intent(MainActivity.this, FormularioActivity.class);
+            startActivity(intention);
+
         });
     }
 
-    private void carregarClientes(){
-        Cliente cliente = new Cliente("Roger","1254548","rs");
-        Cliente cliente2 = new Cliente("Aline","1254548","rs");
-        Cliente cliente3 = new Cliente("Ariane","1254548","rs");
-        this.listaDeClientes = new ArrayList<>();
-        listaDeClientes.add(cliente);
-        listaDeClientes.add(cliente2);
-        listaDeClientes.add(cliente3);
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        carregarClientes();
+    }
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,listaDeClientes);
+    private void carregarClientes() {
+
+        List<Cliente> listaDeClientes = ClienteDAO.listarTodos(this);
+
+        if (listaDeClientes.isEmpty()) {
+            Cliente fake = new Cliente("Lista vazia..", "", "");
+            listaDeClientes.add(fake);
+            lvClientes.setEnabled(false);
+        }
+        lvClientes.setEnabled(true);
+
+        ArrayAdapter<Cliente> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeClientes);
         lvClientes.setAdapter(adapter);
     }
 
