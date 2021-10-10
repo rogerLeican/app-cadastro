@@ -1,27 +1,30 @@
 package br.com.fadergs.cadastramentodecliente;
 
+import androidx.annotation.NonNull;
+
 public class Cliente {
 
     private int id;
     private String nome;
-    private String cep;
+    private String telefone;
     private String estado;
 
-    public Cliente(String nome, String cep, String estado) {
+    public Cliente(String nome, String telefone, String estado) {
         this.nome = nome;
-        this.cep = cep;
+        this.telefone = telefone;
         this.estado = estado;
     }
     public Cliente() {
 
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Cliente{" +
-                "nome='" + nome + '\'' +
-                ", cep='" + cep + '\'' +
-                ", estado='" + estado + '\'' +
+                "nome: '" + nome + '\'' +
+                ", telefone: '" + telefone + '\'' +
+                ", estado: '" + estado + '\'' +
                 '}';
     }
 
@@ -41,12 +44,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCep() {
-        return cep;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getEstado() {
