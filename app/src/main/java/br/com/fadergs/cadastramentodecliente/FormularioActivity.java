@@ -13,6 +13,7 @@ public class FormularioActivity extends AppCompatActivity {
     private EditText etNome;
     private EditText etTelefone;
     private Spinner spEstado;
+    private Button btnSalvar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class FormularioActivity extends AppCompatActivity {
         etNome = findViewById(R.id.etNome);
         etTelefone = findViewById(R.id.etTelefone);
         spEstado = findViewById(R.id.spEstado);
-        Button btnSalvar = findViewById(R.id.btnSalvar);
+        btnSalvar = findViewById(R.id.btnSalvar);
         btnSalvar.setOnClickListener(view -> salvar());
     }
 

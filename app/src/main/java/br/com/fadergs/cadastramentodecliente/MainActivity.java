@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ListView lvClientes;
+    private ArrayAdapter adapter;
+    private List<Cliente> listaDeClientes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void carregarClientes() {
 
-        List<Cliente> listaDeClientes = ClienteDAO.listarTodos(this);
+        this.listaDeClientes = ClienteDAO.listarTodos(this);
 
         if (listaDeClientes.isEmpty()) {
             Cliente fake = new Cliente("Lista vazia..", "", "");
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
         lvClientes.setEnabled(true);
 
-        ArrayAdapter<Cliente> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaDeClientes);
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listaDeClientes);
         lvClientes.setAdapter(adapter);
     }
 

@@ -8,12 +8,11 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-class ClienteDAO {
+public class ClienteDAO {
 
     private static final String TABLE_CLIENTES = "clientes";
 
     private ClienteDAO(){
-
     }
     public static void inserir(Context context, Cliente cliente) {
 
@@ -23,9 +22,8 @@ class ClienteDAO {
         values.put("estado", cliente.getEstado());
 
         SQLiteDatabase db;
-        try (Banco connectionDb = new Banco(context)) {
+        Banco connectionDb = new Banco(context);
             db = connectionDb.getWritableDatabase();
-        }
 
         db.insert(TABLE_CLIENTES, null, values);
     }
@@ -38,9 +36,9 @@ class ClienteDAO {
         values.put("estado", cliente.getEstado());
 
         SQLiteDatabase db;
-        try (Banco connectionDb = new Banco(context)) {
+        Banco connectionDb = new Banco(context);
             db = connectionDb.getWritableDatabase();
-        }
+
 
         db.update(TABLE_CLIENTES, values, "id = " + cliente.getId(), null);
     }
@@ -48,9 +46,8 @@ class ClienteDAO {
     public static void excluir(Context context, int id) {
 
         SQLiteDatabase db;
-        try (Banco connectionDb = new Banco(context)) {
+        Banco connectionDb = new Banco(context);
             db = connectionDb.getWritableDatabase();
-        }
 
         db.delete(TABLE_CLIENTES, "id = " + id, null);
     }
@@ -58,11 +55,11 @@ class ClienteDAO {
     public static List<Cliente> listarTodos(Context context) {
         List<Cliente> lista = new ArrayList<>();
         SQLiteDatabase db;
-        try (Banco connectionDb = new Banco(context)) {
+        Banco connectionDb = new Banco(context);
             db = connectionDb.getReadableDatabase();
-        }
-        try (Cursor cursor = db.rawQuery("SELECT * FROM clientes ORDER BY nome",
-                null)) {
+
+        Cursor cursor = db.rawQuery("SELECT * FROM clientes ORDER BY nome",
+                null);
 
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
@@ -76,19 +73,18 @@ class ClienteDAO {
 
                 } while (cursor.moveToNext());
             }
-        }
+
         return lista;
     }
 
     public static Cliente buscaClientePorId(Context context, int idCliente) {
 
         SQLiteDatabase db;
-        try (Banco connectionDb = new Banco(context)) {
+        Banco connectionDb = new Banco(context);
             db = connectionDb.getReadableDatabase();
-        }
 
-        try (Cursor cursor = db.rawQuery("SELECT * FROM clientes WHERE id = " + idCliente,
-                null)) {
+        Cursor cursor = db.rawQuery("SELECT * FROM clientes WHERE id = " + idCliente,
+                null);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
 
@@ -99,7 +95,7 @@ class ClienteDAO {
                 cliente.setEstado(cursor.getString(3));
                 return cliente;
             }
-        }
+
         return null;
     }
 }
