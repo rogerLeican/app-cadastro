@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,8 +45,26 @@ public class MainActivity extends AppCompatActivity {
             intention.putExtra("idCliente", idCliente);
             startActivity(intention);
         });
-
+        lvClientes.setOnItemLongClickListener((parent, view, position, id) -> {
+            excluir(position);
+            return true;
+        });
     }
+
+    private void excluir(int posicao) {
+        Cliente cliente = listaDeClientes.get(posicao);
+        AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
+        alerta.setTitle("EXCLUIR...");
+        alerta.setIcon(android.R.drawable.ic_delete);
+        alerta.setMessage("Deseja exclui o " + cliente.getNome() + " ?");
+        alerta.setNeutralButton("canselar",null);
+        alerta.setPositiveButton("SIM", (dialogInterface, i) -> {
+            ClienteDAO.excluir(MainActivity.this,cliente.getId());
+            carregarClientes();
+        });
+        alerta.show();
+    }
+
 
     @Override
     protected void onRestart() {
@@ -86,8 +105,6 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
 }
