@@ -33,9 +33,18 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(view -> {
 
             Intent intention = new Intent(MainActivity.this, FormularioActivity.class);
+            intention.putExtra("acao", "inserir");
             startActivity(intention);
-
         });
+
+        lvClientes.setOnItemClickListener((parent, view, position, id) -> {
+            int idCliente = listaDeClientes.get(position).getId();
+            Intent intention = new Intent(MainActivity.this, FormularioActivity.class);
+            intention.putExtra("acao", "editar");
+            intention.putExtra("idCliente", idCliente);
+            startActivity(intention);
+        });
+
     }
 
     @Override

@@ -21,11 +21,7 @@ public class Cliente {
     @NonNull
     @Override
     public String toString() {
-        return "Cliente{" +
-                "nome: '" + nome + '\'' +
-                ", telefone: '" + telefone + '\'' +
-                ", estado: '" + estado + '\'' +
-                '}';
+        return this.nome;
     }
 
     public int getId() {
