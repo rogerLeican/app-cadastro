@@ -10,7 +10,7 @@
         android:id="@+id/btnSalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Salvar"
+        android:text="@string/txtSalvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,36 +24,36 @@
         android:entries="@array/estados"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintTop_toBottomOf="@+id/etTelefone"
+        app:layout_constraintVertical_bias="0.199" />
 
     <EditText
         android:id="@+id/etNome"
         android:layout_width="293dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="Digite o nome"
+        android:hint="@string/txtHintNome"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.144"
+        android:autofillHints="@string/txtAutofillHintsName" />
 
     <EditText
         android:id="@+id/etTelefone"
         android:layout_width="294dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="Digite o telefone"
+        android:hint="@string/txtHintFone"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintVertical_bias="0.316"
+        android:autofillHints="@string/txtAutofillHintsTelefone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

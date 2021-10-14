@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Cadastramento De Cliente</string>
-    <string name="action_settings">Configurações</string>
+    <string name="app_name">Clients of Registry</string>
+    <string name="action_settings">Settings</string>
 
     <string-array name="estados">
-        <item>selecione o estado…</item>
+        <item>select the state…</item>
         <item>AC</item>
         <item>AL</item>
         <item>AP</item>
@@ -32,10 +32,12 @@
         <item>TO</item>
         <item>DF</item>
     </string-array>
-    <string name="txtSalvar">salvar </string>
-    <string name="txtHintNome">Digite seu nome </string>
-    <string name="txtAutofillHintsName">Fulano de tal </string>
-    <string name="txtAutofillHintsTelefone">Fulano de tal </string>
 
-    <string name="txtHintFone">Digite seu telefone </string>
+    <string name="txtHintNome">type your name </string>
+    <string name="txtAutofillHintsName">Fulano de tal </string>
+    <string name="txtHintFone">enter your phone </string>
+    <string name="txtAutofillHintsTelefone">Fulano de tal </string>
+    <string name="txtSalvar">save </string>
+
 </resources>
+
