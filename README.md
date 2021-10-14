@@ -1,6 +1,6 @@
 # app-cadastro
 
-Este aplicativo foi realizado como um primeiro trabalho da faculdade  na cadeira de programação para dispositivos moveis, tem como finalidade o cadastro de clientes.
+Este aplicativo foi realizado como um primeiro trabalho da faculdade,  na cadeira de programação para dispositivos moveis, tem como finalidade o cadastro de clientes.
 
 **Requisitos :** 
 
